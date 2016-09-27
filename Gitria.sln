@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gitria.Webapp", "Gitria\Git
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gitria.Api", "Gitria.Api\Gitria.Api.csproj", "{E86768B3-BE00-4AE4-BCC2-7046693FD951}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gitria.Core", "Gitria.Core\Gitria.Core.csproj", "{D476D030-66DB-4D18-AE41-6B7C09CD5966}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E86768B3-BE00-4AE4-BCC2-7046693FD951}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E86768B3-BE00-4AE4-BCC2-7046693FD951}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E86768B3-BE00-4AE4-BCC2-7046693FD951}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D476D030-66DB-4D18-AE41-6B7C09CD5966}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D476D030-66DB-4D18-AE41-6B7C09CD5966}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D476D030-66DB-4D18-AE41-6B7C09CD5966}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D476D030-66DB-4D18-AE41-6B7C09CD5966}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

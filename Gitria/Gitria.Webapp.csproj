@@ -256,6 +256,16 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gitria.Api\Gitria.Api.csproj">
+      <Project>{e86768b3-be00-4ae4-bcc2-7046693fd951}</Project>
+      <Name>Gitria.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gitria.Core\Gitria.Core.csproj">
+      <Project>{d476d030-66db-4d18-ae41-6b7c09cd5966}</Project>
+      <Name>Gitria.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

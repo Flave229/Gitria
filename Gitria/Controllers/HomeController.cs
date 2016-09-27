@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Gitria.Controllers
 {
@@ -10,6 +6,10 @@ namespace Gitria.Controllers
     {
         public ActionResult Index()
         {
+            var core = new Core.GitCommunications.GetCommits();
+
+            var test = core.GetTotalCommits();
+
             return View();
         }
 
