@@ -1,4 +1,7 @@
-﻿<head>
+﻿@using Gitria.Api.Models
+@model GitriaModel
+
+<head>
     <!-- Custom CSS -->
     <link href="../../Content/sb-admin-2.css" rel="stylesheet">
     <!-- Custom Fonts -->
@@ -75,7 +78,7 @@
                                     <i class="fa fa-book fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">3</div>
+                                    <div class="huge">@Model.ActiveRepositories</div>
                                     <div>Active Repositories</div>
                                 </div>
                             </div>

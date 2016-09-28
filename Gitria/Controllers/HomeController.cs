@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using Gitria.Core;
+using System.Web.Mvc;
 
 namespace Gitria.Controllers
 {
@@ -6,11 +7,9 @@ namespace Gitria.Controllers
     {
         public ActionResult Index()
         {
-            var core = new Core.GitCommunications.GetRepositories();
+            var model = new GitriaModelBuilder().BuildGitriaModel();
 
-            var test = core.GetAllRepositories();
-
-            return View();
+            return View(model);
         }
 
         public ActionResult About()

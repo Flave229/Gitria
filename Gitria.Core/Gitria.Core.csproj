@@ -44,7 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GitCommunications\GetRepositories.cs" />
+    <Compile Include="GitCommunications\GitRepositoryConnection.cs" />
+    <Compile Include="Builders\GitriaModelBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

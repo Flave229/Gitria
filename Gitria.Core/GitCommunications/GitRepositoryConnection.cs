@@ -8,9 +8,9 @@ using System.Text;
 
 namespace Gitria.Core.GitCommunications
 {
-    public class GetRepositories
+    public static class GitRepositoryConnection
     {
-        public List<GitRepository> GetAllRepositories()
+        public static List<GitRepository> GetAllRepositories()
         {
             var authFileContents = File.ReadAllLines((AppDomain.CurrentDomain.BaseDirectory + @"Auth\AuthKey.txt"));
             var authKey = string.Join("", authFileContents);
