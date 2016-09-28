@@ -8,7 +8,7 @@ namespace Gitria.Controllers
         {
             var core = new Core.GitCommunications.GetCommits();
 
-            var test = core.GetTotalCommits();
+            var test = core.GetAllRepositories();
 
             return View();
         }
