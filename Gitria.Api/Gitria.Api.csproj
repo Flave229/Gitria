@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GitModels\GitAuthor.cs" />
+    <Compile Include="GitModels\GitCommit.cs" />
     <Compile Include="GitModels\GitRepository.cs" />
     <Compile Include="Models\GitriaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

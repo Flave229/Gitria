@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Gitria.Api.Models
+namespace Gitria.Api.GitModels
 {
     public class GitRepository
     {
@@ -12,5 +8,6 @@ namespace Gitria.Api.Models
         public string url { get; set; }
         public string commits_url { get; set; }
         public DateTime updated_at { get; set; }
+        public GitAuthor owner { get; set; }
     }
 }
