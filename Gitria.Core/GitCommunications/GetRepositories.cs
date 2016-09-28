@@ -2,16 +2,15 @@
 using System;
 using System.IO;
 using System.Net;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
 namespace Gitria.Core.GitCommunications
 {
-    public class GetCommits
+    public class GetRepositories
     {
         public int GetAllRepositories()
         {
-            var authFileContents = File.ReadAllLines((AppDomain.CurrentDomain.BaseDirectory + @"..\Auth\AuthKey.txt"));
+            var authFileContents = File.ReadAllLines((AppDomain.CurrentDomain.BaseDirectory + @"Auth\AuthKey.txt"));
             var authKey = string.Join("", authFileContents);
 
             var getRepositoriesRequest = (HttpWebRequest)WebRequest.Create("https://api.github.com/user/repos");

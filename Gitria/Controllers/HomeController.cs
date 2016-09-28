@@ -6,7 +6,7 @@ namespace Gitria.Controllers
     {
         public ActionResult Index()
         {
-            var core = new Core.GitCommunications.GetCommits();
+            var core = new Core.GitCommunications.GetRepositories();
 
             var test = core.GetAllRepositories();
 
