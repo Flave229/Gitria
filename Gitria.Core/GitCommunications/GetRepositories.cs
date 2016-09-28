@@ -1,5 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using Gitria.Api.Models;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -8,7 +10,7 @@ namespace Gitria.Core.GitCommunications
 {
     public class GetRepositories
     {
-        public int GetAllRepositories()
+        public List<GitRepository> GetAllRepositories()
         {
             var authFileContents = File.ReadAllLines((AppDomain.CurrentDomain.BaseDirectory + @"Auth\AuthKey.txt"));
             var authKey = string.Join("", authFileContents);
@@ -23,14 +25,14 @@ namespace Gitria.Core.GitCommunications
 
             var httpResponse = (HttpWebResponse)getRepositoriesRequest.GetResponse();
 
-            var json = new object();
+            var repositories = new List<GitRepository>();
 
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
             {
-                json = JsonConvert.DeserializeObject(streamReader.ReadToEnd());
+                repositories = JsonConvert.DeserializeObject<List<GitRepository>>(streamReader.ReadToEnd());
             }
 
-            return 0;
+            return repositories;
         }
     }
 }
