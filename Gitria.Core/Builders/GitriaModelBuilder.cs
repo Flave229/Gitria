@@ -40,9 +40,6 @@ namespace Gitria.Core
 
                 foreach (var commit in commitsForRepository)
                 {
-                    // Github dates are one hour behind
-                    commit.commit.author.date = commit.commit.author.date.AddHours(1);
-
                     var timeAgo = (DateTime.Now - commit.commit.author.date);
 
                     if ((int)timeAgo.TotalSeconds <= 1)
