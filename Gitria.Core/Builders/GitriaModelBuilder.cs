@@ -40,21 +40,44 @@ namespace Gitria.Core
 
                 foreach (var commit in commitsForRepository)
                 {
+                    // Github dates are one hour behind
+                    commit.commit.author.date = commit.commit.author.date.AddHours(1);
+
                     var timeAgo = (DateTime.Now - commit.commit.author.date);
 
-                    if (timeAgo.TotalMinutes < 60)
+                    if ((int)timeAgo.TotalSeconds <= 1)
+                    {
+                        commit.time_ago = "1 second ago";
+                    }
+                    else if ((int)timeAgo.TotalSeconds < 60)
+                    {
+                        commit.time_ago = (int)timeAgo.TotalSeconds + " seconds ago";
+                    }
+                    else if ((int)timeAgo.TotalMinutes == 1)
+                    {
+                        commit.time_ago = "1 minute ago";
+                    }
+                    else if ((int)timeAgo.TotalMinutes < 60)
                     {
                         commit.time_ago = (int)timeAgo.TotalMinutes + " minutes ago";
                     }
-                    else if (timeAgo.TotalHours < 24)
+                    else if ((int)timeAgo.TotalHours == 1)
+                    {
+                        commit.time_ago = "1 hour ago";
+                    }
+                    else if ((int)timeAgo.TotalHours < 24)
                     {
                         commit.time_ago = (int)timeAgo.TotalHours + " hours ago";
                     }
-                    else if (timeAgo.TotalDays < 365)
+                    else if ((int)timeAgo.TotalDays == 1)
+                    {
+                        commit.time_ago = "1 day ago";
+                    }
+                    else if ((int)timeAgo.TotalDays < 365)
                     {
                         commit.time_ago = (int)timeAgo.TotalDays + " days ago";
                     }
-                    else if (timeAgo.TotalDays >= 365)
+                    else if ((int)timeAgo.TotalDays >= 365)
                     {
                         int years;
                         var yearsCalc = Math.DivRem((int)timeAgo.TotalDays, 365, out years);
