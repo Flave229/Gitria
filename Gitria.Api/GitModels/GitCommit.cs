@@ -5,6 +5,7 @@ namespace Gitria.Api.GitModels
     public class GitCommit
     {
         public string repo_name { get; set; }
+        public string time_ago { get; set; }
         public CommitInfo commit { get; set; }
         public GitAuthor author { get; set; }
     }

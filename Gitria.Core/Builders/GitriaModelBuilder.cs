@@ -40,6 +40,28 @@ namespace Gitria.Core
 
                 foreach (var commit in commitsForRepository)
                 {
+                    var timeAgo = (DateTime.Now - commit.commit.author.date);
+
+                    if (timeAgo.TotalMinutes < 60)
+                    {
+                        commit.time_ago = (int)timeAgo.TotalMinutes + " minutes ago";
+                    }
+                    else if (timeAgo.TotalHours < 24)
+                    {
+                        commit.time_ago = (int)timeAgo.TotalHours + " hours ago";
+                    }
+                    else if (timeAgo.TotalDays < 365)
+                    {
+                        commit.time_ago = (int)timeAgo.TotalDays + " days ago";
+                    }
+                    else if (timeAgo.TotalDays >= 365)
+                    {
+                        int years;
+                        var yearsCalc = Math.DivRem((int)timeAgo.TotalDays, 365, out years);
+                        commit.time_ago = years + " years ago";
+                    }
+
+
                     commit.repo_name = repository.name;
                 }
 
