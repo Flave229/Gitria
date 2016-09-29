@@ -1,4 +1,5 @@
 ﻿using Gitria.Core;
+using System;
 using System.Web.Mvc;
 
 namespace Gitria.Controllers
@@ -12,18 +13,11 @@ namespace Gitria.Controllers
             return View(model);
         }
 
-        public ActionResult About()
+        [HttpPost]
+        [Route("Home/CheckForUpdates/{lastUpdated}")]
+        public string CheckForUpdates(string lastUpdated)
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return "You hit me!";
         }
     }
 }

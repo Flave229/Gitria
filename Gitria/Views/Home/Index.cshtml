@@ -1,6 +1,8 @@
 ﻿@using Gitria.Api.Models
 @model GitriaModel
 
+@Scripts.Render("../Scripts/GitriaScripts/GithubCommunication.js")
+
 <head>
     <!-- Custom CSS -->
     <link href="../../Content/sb-admin-2.css" rel="stylesheet">
@@ -155,4 +157,12 @@
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
+
+    @Html.Hidden("lastUpdated", Model.LastUpdate)
+
+    <script>
+        window.setInterval(function () {
+            CheckForUpdates();
+        }, 5000)
+    </script>
 </body>

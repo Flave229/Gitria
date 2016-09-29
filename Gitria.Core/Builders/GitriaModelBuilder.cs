@@ -15,10 +15,12 @@ namespace Gitria.Core
             var activeRepositories = GetActiveRepositories(allRepositories);
             var activeCommits = GetCommitsForRepositories(activeRepositories);
             var commitsThisWeek = FilterCommitsByTime(activeCommits, DateTime.Today.AddDays(-7), DateTime.Today.AddDays(1));
+            var lastUpdated = activeRepositories.Max(repo => repo.updated_at);
 
             return new GitriaModel
             {
                 ActiveRepositories = activeRepositories.Count(),
+                LastUpdate = lastUpdated.ToString("yyyy-MM-ddTHH-mm-ss"),
                 CommitsThisWeek = commitsThisWeek,
                 CommitsThisWeekCount = commitsThisWeek.Count(),
                 CommitsThisMonthCount = FilterCommitsByTime(activeCommits, DateTime.Today.AddMonths(-1), DateTime.Today.AddDays(1)).Count()
