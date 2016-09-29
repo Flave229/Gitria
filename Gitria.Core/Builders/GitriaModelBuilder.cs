@@ -14,12 +14,14 @@ namespace Gitria.Core
             var allRepositories = GitRepositoryConnection.GetAllRepositories();
             var activeRepositories = GetActiveRepositories(allRepositories);
             var activeCommits = GetCommitsForRepositories(activeRepositories);
+            var commitsThisWeek = FilterCommitsByTime(activeCommits, DateTime.Today.AddDays(-7), DateTime.Today.AddDays(1));
 
             return new GitriaModel
             {
                 ActiveRepositories = activeRepositories.Count(),
-                CommitsThisWeek = FilterCommitsByTime(activeCommits, DateTime.Today.AddDays(-7), DateTime.Today).Count,
-                CommitsThisMonth = FilterCommitsByTime(activeCommits, DateTime.Today.AddMonths(-1), DateTime.Today).Count
+                CommitsThisWeek = commitsThisWeek,
+                CommitsThisWeekCount = commitsThisWeek.Count(),
+                CommitsThisMonthCount = FilterCommitsByTime(activeCommits, DateTime.Today.AddMonths(-1), DateTime.Today.AddDays(1)).Count()
             };
         }
 
@@ -27,8 +29,7 @@ namespace Gitria.Core
         {
             return repositories.Where(repository => repository.updated_at > DateTime.Now.AddMonths(-3)).ToList();
         }
-
-
+        
         public List<GitCommit> GetCommitsForRepositories(List<GitRepository> repositories)
         {
             var commits = new List<GitCommit>();
