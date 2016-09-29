@@ -159,6 +159,7 @@
     <!-- /#wrapper -->
 
     @Html.Hidden("lastUpdated", Model.LastUpdate)
+    @Html.Hidden("apiController", Url.Action("CheckForUpdates", "Home"))
 
     <script>
         window.setInterval(function () {
