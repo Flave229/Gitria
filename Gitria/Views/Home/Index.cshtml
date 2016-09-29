@@ -111,9 +111,9 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="list-group">
-                                <a href="#" class="list-group-item">
-                                    @foreach (var commit in Model.CommitsThisWeek)
-                                    {
+                                @foreach (var commit in Model.CommitsThisWeek)
+                                {
+                                    <a href="#" class="list-group-item">
                                         <table class="table-condensed" border="0">
                                             <tr>
                                                 <td class="img-size-7">
@@ -140,8 +140,8 @@
                                                 </td>
                                             </tr>
                                         </table>
-                                    }
-                                </a>
+                                    </a>
+                                }
                             </div>
                         </div>
                         <!-- /.panel-body -->
