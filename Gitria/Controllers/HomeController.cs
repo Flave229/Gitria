@@ -1,5 +1,7 @@
 ﻿using Gitria.Core;
+using Gitria.Core.GitCommunications;
 using System;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace Gitria.Controllers
@@ -13,11 +15,16 @@ namespace Gitria.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        [Route("Home/CheckForUpdates/{lastUpdated}")]
+        [HttpGet]
         public string CheckForUpdates(string lastUpdated)
         {
-            return "You hit me!";
+            var dateTimeValues = lastUpdated.Split('-');
+            var updated = new DateTime(int.Parse(dateTimeValues[0]), int.Parse(dateTimeValues[1]), int.Parse(dateTimeValues[2]), int.Parse(dateTimeValues[3]), int.Parse(dateTimeValues[4]), int.Parse(dateTimeValues[5]));
+
+            var allRepositories = GitRepositoryConnection.GetAllRepositories();
+            var lastUpdatedRepository = allRepositories.Max(repo => repo.updated_at);
+
+            return "You parsed it!";
         }
     }
 }

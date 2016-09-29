@@ -20,7 +20,7 @@ namespace Gitria.Core
             return new GitriaModel
             {
                 ActiveRepositories = activeRepositories.Count(),
-                LastUpdate = lastUpdated.ToString("yyyy-MM-ddTHH-mm-ss"),
+                LastUpdate = lastUpdated.ToString("yyyy-MM-dd-HH-mm-ss"),
                 CommitsThisWeek = commitsThisWeek,
                 CommitsThisWeekCount = commitsThisWeek.Count(),
                 CommitsThisMonthCount = FilterCommitsByTime(activeCommits, DateTime.Today.AddMonths(-1), DateTime.Today.AddDays(1)).Count()
