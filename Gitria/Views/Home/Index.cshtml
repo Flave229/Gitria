@@ -113,7 +113,7 @@
                             <div class="list-group">
                                 @foreach (var commit in Model.CommitsThisWeek)
                                 {
-                                    <a href="#" class="list-group-item">
+                                    <a href="@commit.html_url" class="list-group-item">
                                         <table class="table-condensed" border="0">
                                             <tr>
                                                 <td class="img-size-7">
