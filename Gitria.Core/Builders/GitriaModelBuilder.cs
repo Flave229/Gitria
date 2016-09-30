@@ -11,11 +11,10 @@ namespace Gitria.Core
     {
         public GitriaModel BuildGitriaModel()
         {
-            var allRepositories = GitRepositoryConnection.GetAllRepositories();
-            var activeRepositories = GetActiveRepositories(allRepositories);
+            var activeRepositories = GetActiveRepositories();
             var activeCommits = GetCommitsForRepositories(activeRepositories);
             var commitsThisWeek = FilterCommitsByTime(activeCommits, DateTime.Today.AddDays(-7), DateTime.Today.AddDays(1));
-            var lastUpdated = activeRepositories.Max(repo => repo.updated_at);
+            var lastUpdated = commitsThisWeek.Max(commit => commit.commit.author.date);
 
             return new GitriaModel
             {
@@ -27,7 +26,13 @@ namespace Gitria.Core
             };
         }
 
-        public List<GitRepository> GetActiveRepositories(List<GitRepository> repositories)
+        public List<GitRepository> GetActiveRepositories()
+        {
+            var allRepositories = GitRepositoryConnection.GetAllRepositories();
+            return GetActiveRepositories(allRepositories);
+        }
+
+        private List<GitRepository> GetActiveRepositories(List<GitRepository> repositories)
         {
             return repositories.Where(repository => repository.updated_at > DateTime.Now.AddMonths(-3)).ToList();
         }

@@ -1,5 +1,6 @@
 ﻿using Gitria.Core;
 using Gitria.Core.GitCommunications;
+using Newtonsoft.Json;
 using System;
 using System.Linq;
 using System.Web.Mvc;
@@ -21,10 +22,15 @@ namespace Gitria.Controllers
             var dateTimeValues = lastUpdated.Split('-');
             var updated = new DateTime(int.Parse(dateTimeValues[0]), int.Parse(dateTimeValues[1]), int.Parse(dateTimeValues[2]), int.Parse(dateTimeValues[3]), int.Parse(dateTimeValues[4]), int.Parse(dateTimeValues[5]));
 
-            var allRepositories = GitRepositoryConnection.GetAllRepositories();
-            var lastUpdatedRepository = allRepositories.Max(repo => repo.updated_at);
+            var builder = new GitriaModelBuilder();
 
-            return "You parsed it!";
+            var activeRepositories = builder.GetActiveRepositories();
+            var commits = builder.GetCommitsForRepositories(activeRepositories);
+
+            var newCommits = commits.Where(commit => commit.commit.author.date > updated);
+            
+
+            return JsonConvert.SerializeObject(newCommits);
         }
     }
 }
