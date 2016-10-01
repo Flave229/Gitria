@@ -29,7 +29,6 @@ namespace Gitria.Controllers
 
             var newCommits = commits.Where(commit => commit.commit.author.date > updated).ToList();
             
-
             return JsonConvert.SerializeObject(newCommits);
         }
     }
