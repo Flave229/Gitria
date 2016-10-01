@@ -95,7 +95,7 @@ namespace Gitria.Core
                 commits.AddRange(commitsForRepository);
             }
 
-            return commits;
+            return commits.OrderByDescending(commit => commit.commit.author.date).ToList();
         }
 
         private List<GitCommit> FilterCommitsByTime(List<GitCommit> commits, DateTime from, DateTime to)
