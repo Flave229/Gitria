@@ -18,11 +18,11 @@
 function UpdatePageWithNewCommits(response)
 {
     document.getElementById('lastUpdate').value = response[0].commit.author.date.replace(/:/g, '-').replace('T', '-').replace('Z', '');
-    debugger;
+
     for (var i = 0; i < response.length; i++)
     {
         $("#commit-panel").prepend('<div id="new-commit" style="display:none">'
-            + '<a href="' + response[i].html_url + '" class="list-group-item">'
+            + '<a id="new-commit-panel" href="' + response[i].html_url + '" class="list-group-item" style="background-color: #00FF00">'
             + '<table class="table-condensed" border="0">'
             + '<tr>'
             + '<td class="img-size-7">'
@@ -57,5 +57,11 @@ function UpdatePageWithNewCommits(response)
 
         $('#new-commit')
         .slideDown(3000);
+
+        $('#new-commit-panel')
+        .animate(
+        {
+            backgroundColor: "#FFF"
+        }, 20000);
     }
 }
