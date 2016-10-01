@@ -22,7 +22,7 @@ function UpdatePageWithNewCommits(response)
         + '<table class="table-condensed" border="0">' 
         + '<tr>'
         + '<td class="img-size-7">'
-        + '<img src="' + response[0].author.avatar_url + '" class="img-circle img-scale" alt="Flave229" />'
+        + '<img src="' + response[0].committer.avatar_url + '" class="img-circle img-scale" alt="' + response[0].committer.login + '" />'
         + '</td>'
         + '<td valign="top">'
         + '<table border="0">'

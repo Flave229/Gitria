@@ -8,7 +8,7 @@ namespace Gitria.Api.GitModels
         public string time_ago { get; set; }
         public string html_url { get; set; }
         public CommitInfo commit { get; set; }
-        public GitAuthor author { get; set; }
+        public GitAuthor committer { get; set; }
     }
 
     public class CommitInfo
