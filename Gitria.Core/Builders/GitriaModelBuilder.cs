@@ -47,9 +47,6 @@ namespace Gitria.Core
                 
                 foreach (var commit in commitsForRepository)
                 {
-                    commit.commit.author.date = new DateTime(commit.commit.author.date.Year, commit.commit.author.date.Month, commit.commit.author.date.Day,
-                        commit.commit.author.date.Hour, commit.commit.author.date.Minute, commit.commit.author.date.Second);
-
                     var timeAgo = (DateTime.Now - commit.commit.author.date);
 
                     if ((int)timeAgo.TotalSeconds <= 1)

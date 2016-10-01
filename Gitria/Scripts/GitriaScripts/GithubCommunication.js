@@ -17,7 +17,7 @@
 
 function UpdatePageWithNewCommits(response)
 {
-    document.getElementById('lastUpdate').value = response[0].commit.author.date.replace(':', '-').replace('T', '-').replace('Z', '');
+    document.getElementById('lastUpdate').value = response[0].commit.author.date.replace(/:/g, '-').replace('T', '-').replace('Z', '');
     $("#commit-panel").prepend('<a href="' + response[0].html_url + '" class="list-group-item">'
         + '<table class="table-condensed" border="0">' 
         + '<tr>'
