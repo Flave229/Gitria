@@ -34,7 +34,7 @@ function UpdatePageWithNewCommits(response)
             + '<td>'
             + '<h3>'
             + '<i class="fa fa-code fa-fw"></i>'
-            + 'New Commit to ' + response[i].repo_name
+            + ' ' + response[i].committer.login + ' committed to ' + response[i].repo_name
             + '</h3>'
             + '</td>'
             + '</tr>'
