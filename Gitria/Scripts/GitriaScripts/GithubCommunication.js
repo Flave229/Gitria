@@ -1,8 +1,9 @@
 ﻿function CheckForUpdates()
 {
+    var lastUpdate = document.getElementById("lastUpdate");
     var mvcAction = document.getElementById("apiController");
     var response = $.ajax({
-        type: "GET", url: mvcAction.value, success: function (response)
+        type: "GET", url: mvcAction.value + "?lastUpdated=" + lastUpdate.value, success: function (response)
         {
             var json = JSON.parse(response);
 
