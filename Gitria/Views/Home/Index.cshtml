@@ -112,7 +112,7 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div class="list-group">
+                            <div id="commit-panel" class="list-group">
                                 @foreach (var commit in Model.CommitsThisWeek)
                                 {
                                     <a href="@commit.html_url" class="list-group-item">
@@ -158,6 +158,7 @@
     </div>
     <!-- /#wrapper -->
 
+    @Html.Hidden("lastUpdate", Model.LastUpdate)
     @Html.Hidden("apiController", Url.Action("CheckForUpdates", "Home", new { lastUpdated = Model.LastUpdate }))
 
     <script>

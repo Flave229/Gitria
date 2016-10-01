@@ -27,7 +27,7 @@ namespace Gitria.Controllers
             var activeRepositories = builder.GetActiveRepositories();
             var commits = builder.GetCommitsForRepositories(activeRepositories);
 
-            var newCommits = commits.Where(commit => commit.commit.author.date > updated);
+            var newCommits = commits.Where(commit => commit.commit.author.date > updated).ToList();
             
 
             return JsonConvert.SerializeObject(newCommits);

@@ -87,8 +87,7 @@ namespace Gitria.Core
                         var yearsCalc = Math.DivRem((int)timeAgo.TotalDays, 365, out years);
                         commit.time_ago = years + " years ago";
                     }
-
-
+                    
                     commit.repo_name = repository.name;
                 }
 
