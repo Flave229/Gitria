@@ -1,5 +1,4 @@
 ﻿using Gitria.Core;
-using Gitria.Core.GitCommunications;
 using Newtonsoft.Json;
 using System;
 using System.Linq;

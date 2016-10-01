@@ -1,5 +1,4 @@
 ﻿using Gitria.Api.GitModels;
-using System;
 using System.Collections.Generic;
 
 namespace Gitria.Api.Models
