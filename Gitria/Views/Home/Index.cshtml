@@ -115,34 +115,36 @@
                             <div id="commit-panel" class="list-group">
                                 @foreach (var commit in Model.CommitsThisWeek)
                                 {
-                                    <a href="@commit.html_url" class="list-group-item">
-                                        <table class="table-condensed" border="0">
-                                            <tr>
-                                                <td class="img-size-7">
-                                                    <img src="@commit.committer.avatar_url" class="img-circle img-scale" alt="@commit.committer.login" />
-                                                </td>
-                                                <td valign="top">
-                                                    <table border="0">
-                                                        <tr>
-                                                            <td>
-                                                                <h3><i class="fa fa-code fa-fw"></i> New Commit to @commit.repo_name</h3>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <span>@commit.commit.message</span>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                                <td valign="top">
-                                                    <span class="pull-right text-muted small">
-                                                        <em>@commit.time_ago</em>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </a>
+                                    <div>
+                                        <a href="@commit.html_url" class="list-group-item">
+                                            <table class="table-condensed" border="0">
+                                                <tr>
+                                                    <td class="img-size-7">
+                                                        <img src="@commit.committer.avatar_url" class="img-circle img-scale" alt="@commit.committer.login" />
+                                                    </td>
+                                                    <td valign="top">
+                                                        <table border="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <h3><i class="fa fa-code fa-fw"></i> New Commit to @commit.repo_name</h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span>@commit.commit.message</span>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td valign="top">
+                                                        <span class="pull-right text-muted small">
+                                                            <em>@commit.time_ago</em>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </a>
+                                    </div>
                                 }
                             </div>
                         </div>
