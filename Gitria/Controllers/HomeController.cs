@@ -20,7 +20,7 @@ namespace Gitria.Controllers
         public string CheckForUpdates(string lastUpdated)
         {
             var dateTimeValues = lastUpdated.Split('-');
-            var updated = new DateTime(int.Parse(dateTimeValues[0]), 09, 30 /*int.Parse(dateTimeValues[1]), int.Parse(dateTimeValues[2])*/, int.Parse(dateTimeValues[3]), int.Parse(dateTimeValues[4]), int.Parse(dateTimeValues[5]));
+            var updated = new DateTime(int.Parse(dateTimeValues[0]), int.Parse(dateTimeValues[1]), int.Parse(dateTimeValues[2]), int.Parse(dateTimeValues[3]), int.Parse(dateTimeValues[4]), int.Parse(dateTimeValues[5]));
 
             var builder = new GitriaModelBuilder();
 
