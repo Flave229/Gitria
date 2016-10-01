@@ -391,6 +391,7 @@ img {
 }
 
 .img-size-7 {
+  min-width: 50px;
   width: 7%;
 }
 
