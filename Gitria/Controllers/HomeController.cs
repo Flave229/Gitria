@@ -36,7 +36,7 @@ namespace Gitria.Controllers
                 NewCommits = newCommits
             };
 
-            return JsonConvert.SerializeObject(newCommits);
+            return JsonConvert.SerializeObject(gitriaUpdate);
         }
     }
 }
