@@ -28,7 +28,7 @@ function UpdatePageWithNewCommits(response)
             + '<td>'
             + '<table>'
             + '<tr>'
-            + '<td class-size-20>'
+            + '<td class="img-size-20">'
             + '<img src="' + response[i].committer.avatar_url + '" class="img-circle img-scale" alt="' + response[i].committer.login + '" />'
             + '</td>'
             + '<td>'
