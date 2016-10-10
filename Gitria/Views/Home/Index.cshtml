@@ -105,7 +105,20 @@
             </div>
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-9">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-spinner fa-fw"></i> Upcoming Graph...
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-4 -->
+                <div class="col-lg-3 col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="fa fa-bell fa-fw"></i> Commit Panel
@@ -131,15 +144,15 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>
+                                                                    <span class="text-muted small">@commit.time_ago</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
                                                                     <span>@commit.commit.message</span>
                                                                 </td>
                                                             </tr>
                                                         </table>
-                                                    </td>
-                                                    <td valign="top">
-                                                        <span class="pull-right text-muted small">
-                                                            <em>@commit.time_ago</em>
-                                                        </span>
                                                     </td>
                                                 </tr>
                                             </table>
