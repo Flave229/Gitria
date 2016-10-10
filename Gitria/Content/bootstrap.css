@@ -351,6 +351,27 @@ a:focus {
   outline-offset: -2px;
 }
 
+.applicationIcon {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #2F4F4F;
+	border-radius:50%;
+    height: 100px;
+    max-height: 100px;
+    line-height: 100px;
+    width: 100px;
+    max-width: 100px;
+}
+
+.applicationText {
+    color: #FFFFFF;
+    text-align: center;
+	font-weight: bold;
+	font-size: 3.0em;
+	margin:0 auto;
+}
+
 img {
   vertical-align: middle;
 }
