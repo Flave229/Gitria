@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Linq;
 using System.Web.Mvc;
+using Gitria.Api.Models;
 
 namespace Gitria.Controllers
 {
@@ -27,7 +28,14 @@ namespace Gitria.Controllers
             var commits = builder.GetCommitsForRepositories(activeRepositories);
 
             var newCommits = commits.Where(commit => commit.commit.author.date > updated).ToList();
-            
+            if (newCommits.Count <= 0) return "{}";
+
+            var gitriaUpdate = new GitriaUpdateModel
+            {
+                Count = newCommits.Count,
+                NewCommits = newCommits
+            };
+
             return JsonConvert.SerializeObject(newCommits);
         }
     }
