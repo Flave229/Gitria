@@ -6,13 +6,20 @@
     <title>Gitria</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/jquery-ui.js")
+    
+    @Scripts.Render("https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js")
+    @Scripts.Render("https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.min.js")
+    @Scripts.Render("https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.js")
+    @Scripts.Render("https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js")
 </head>
 <body style="padding:0">
     @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
     @RenderBody()
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/Scripts/jquery-ui.js")
-    @RenderSection("scripts", required: false)
+
+@RenderSection("scripts", required: false)
 </body>
 </html>

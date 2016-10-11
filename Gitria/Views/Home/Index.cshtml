@@ -119,6 +119,11 @@
                             <div class="applicationIcon">
                                 <span class="applicationText">HF</span>
                             </div>
+                            <div class="applicationGraph">
+                                <canvas id="appDeletions" height="110" width="110"></canvas>
+                                <canvas id="appAdditions" height="130" width="130"></canvas>
+                            </div>
+                            <div id="chartjs-tooltip"></div>
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -189,6 +194,7 @@
     @Html.Hidden("lastUpdate", Model.LastUpdate)
     @Html.Hidden("apiController", Url.Action("CheckForUpdates", "Home"))
 
+    @Scripts.Render("~/Scripts/GitriaScripts/GitriaChartHandler.js")
     <script>
         window.setInterval(function () {
             CheckForUpdates();
