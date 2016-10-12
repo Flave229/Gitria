@@ -19,7 +19,7 @@ var myChart1 = new Chart(ctx1,
         {
             display: false
         },
-        cutoutPercentage: 90
+        cutoutPercentage: 80
     }
 });
 
@@ -35,7 +35,7 @@ var myChart2 = new Chart(ctx2,
         datasets: [
         {
             barThickness: 5,
-            backgroundColor: ["#46BFBD", "#4D5360"],
+            backgroundColor: ["#32CD32", "#4D5360"],
             data: [45, 55]
         }]
     },
@@ -45,6 +45,6 @@ var myChart2 = new Chart(ctx2,
         {
             display: false
         },
-        cutoutPercentage: 90
+        cutoutPercentage: 80
     }
 });

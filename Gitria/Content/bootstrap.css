@@ -363,22 +363,22 @@ a:focus {
     line-height: 100px;
     width: 100px;
     max-width: 100px;
-    margin-left: 11px;
-    margin-top: 11px;
+    margin-left: 17px;
+    margin-top: 17px;
 }
 
 .appDeletionsContainer {
     position: absolute;
-    width: 122px;
-    height: 122px;
+    width: 134px;
+    height: 134px;
 }
 
 .appAdditionsContainer {
     position: relative;
     width: 110px;
     height: 110px;
-    margin-left: 6px;
-    margin-top: 6px;
+    margin-left: 12px;
+    margin-top: 12px;
 }
 
 .applicationText {
