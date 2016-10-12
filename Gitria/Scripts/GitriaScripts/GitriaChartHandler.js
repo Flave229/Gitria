@@ -1,6 +1,7 @@
 ﻿var ctx1 = document.getElementById("appDeletions").getContext('2d');
+
 var myChart1 = new Chart(ctx1,
-    {
+{
     type: 'doughnut',
     data:
     {
@@ -18,11 +19,12 @@ var myChart1 = new Chart(ctx1,
         {
             display: false
         },
-        cutoutPercentage: 70
+        cutoutPercentage: 90
     }
 });
 
 var ctx2 = document.getElementById("appAdditions").getContext('2d');
+
 var myChart2 = new Chart(ctx2,
 {
     type: 'doughnut',
@@ -43,6 +45,6 @@ var myChart2 = new Chart(ctx2,
         {
             display: false
         },
-        cutoutPercentage: 70
+        cutoutPercentage: 90
     }
 });
