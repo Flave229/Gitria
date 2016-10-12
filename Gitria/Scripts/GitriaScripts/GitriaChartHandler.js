@@ -6,10 +6,9 @@ var myChart1 = new Chart(ctx1,
     data:
     {
         labels: ["Deletions"],
-        legend: false,
         datasets: [
         {
-            backgroundColor: ["#F7464A", "#4D5360"],
+            backgroundColor: ["#F7464A", "#FFFFFF"],
             data: [20, 80]
         }]
     },
@@ -31,11 +30,9 @@ var myChart2 = new Chart(ctx2,
     data:
     {
         labels: ["Additions"],
-        legend: false,
         datasets: [
         {
-            barThickness: 5,
-            backgroundColor: ["#32CD32", "#4D5360"],
+            backgroundColor: ["#32CD32", "#FFFFFF"],
             data: [45, 55]
         }]
     },
