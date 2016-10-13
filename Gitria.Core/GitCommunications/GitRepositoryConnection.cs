@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
+using Gitria.Core.Models;
 
 namespace Gitria.Core.GitCommunications
 {
@@ -40,11 +41,11 @@ namespace Gitria.Core.GitCommunications
             return repositories;
         }
 
-        public static List<GitCommit> GetAllCommitsForRepository(GitRepository repository)
+        public static List<GitCommit> GetAllCommitsForRepository(Repository repository)
         {
             var authKey = GetAuthKey();
 
-            var getRepositoriesRequest = (HttpWebRequest)WebRequest.Create($"https://api.github.com/repos/{repository.owner.login}/{repository.name}/commits");
+            var getRepositoriesRequest = (HttpWebRequest)WebRequest.Create($"https://api.github.com/repos/{repository.Owner.login}/{repository.Name}/commits");
             getRepositoriesRequest.ContentType = "application/json";
             getRepositoriesRequest.Accept = "*/*";
             getRepositoriesRequest.Method = "GET";
@@ -53,7 +54,7 @@ namespace Gitria.Core.GitCommunications
 
             var httpResponse = (HttpWebResponse)getRepositoriesRequest.GetResponse();
 
-            var commit = new List<GitCommit>();
+            List<GitCommit> commit;
 
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
             {

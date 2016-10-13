@@ -142,17 +142,17 @@
                                 @foreach (var commit in Model.CommitsThisWeek)
                                 {
                                     <div>
-                                        <a href="@commit.html_url" class="list-group-item">
+                                        <a href="@commit.Url" class="list-group-item">
                                             <table class="table-condensed" border="0">
                                                 <tr>
                                                     <td>
                                                         <table>
                                                             <tr>
                                                                 <td class="img-size-20">
-                                                                    <img src="@commit.committer.avatar_url" class="img-circle img-scale" alt="@commit.committer.login" />
+                                                                    <img src="@commit.Author.AvatarLink" class="img-circle img-scale" alt="@commit.Author.Name" />
                                                                 </td>
                                                                 <td>
-                                                                    <h3><i class="fa fa-code fa-fw"></i> @commit.committer.login committed to @commit.repo_name</h3>
+                                                                    <h3><i class="fa fa-code fa-fw"></i> @commit.Author.Name committed to @commit.RepositoryName</h3>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -163,12 +163,12 @@
                                                         <table border="0">
                                                             <tr>
                                                                 <td>
-                                                                    <span class="text-muted small">@commit.time_ago</span>
+                                                                    <span class="text-muted small">@commit.TimeAgo</span>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    <span>@commit.commit.message</span>
+                                                                    <span>@commit.Message</span>
                                                                 </td>
                                                             </tr>
                                                         </table>

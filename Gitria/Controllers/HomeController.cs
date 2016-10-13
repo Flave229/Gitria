@@ -27,7 +27,7 @@ namespace Gitria.Controllers
             var activeRepositories = builder.GetActiveRepositories();
             var commits = builder.GetCommitsForRepositories(activeRepositories);
 
-            var newCommits = commits.Where(commit => commit.commit.author.date > updated).ToList();
+            var newCommits = commits.Where(commit => commit.Date > updated).ToList();
             if (newCommits.Count <= 0) return "{}";
 
             var gitriaUpdate = new GitriaUpdateModel
