@@ -52,8 +52,13 @@ namespace Gitria.Core
 
             foreach(var repository in repositories)
             {
-                var commitsForRepository = CommitMapper.MapFrom(GitRepositoryConnection.GetAllCommitsForRepository(repository));
-                
+                var commitsForRepository = CommitMapper.MapFrom(GitRepositoryConnection.GetAllCommitsForRepository(repository)).OrderByDescending(commit => commit.Date).ToList();
+
+                if (commitsForRepository.Count != 0 && repository.UpdatedAt < commitsForRepository.ElementAt(0).Date)
+                {
+                    repository.UpdatedAt = commitsForRepository.ElementAt(0).Date;
+                }
+
                 foreach (var commit in commitsForRepository)
                 {
                     var timeAgo = (DateTime.Now - commit.Date);

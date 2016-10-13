@@ -115,16 +115,18 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div class="applicationIcon">
-                                <span class="applicationText">HF</span>
-                            </div>
-                            <div class="appDeletionsContainer">
-                                <canvas id="appDeletions" class="appDeletions" height="110" width="110"></canvas>
-                            </div>
-                            <div class="appAdditionsContainer">
-                                <canvas id="appAdditions" class="appAdditions" height="120" width="120"></canvas>
-                            </div>
-                            <div id="chartjs-tooltip"></div>
+                            @foreach (var repository in Model.Repositories.OrderByDescending(repository => repository.UpdatedAt))
+                            {
+                                <div class="applicationIcon">
+                                    <span class="applicationText">@repository.Initials</span>
+                                </div>
+                                <div class="appDeletionsContainer">
+                                    <canvas id="appDeletions" class="appDeletions" height="110" width="110"></canvas>
+                                </div>
+                                <div class="appAdditionsContainer">
+                                    <canvas id="appAdditions" class="appAdditions" height="120" width="120"></canvas>
+                                </div>
+                            }
                         </div>
                         <!-- /.panel-body -->
                     </div>
