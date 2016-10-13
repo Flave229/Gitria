@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Gitria.Core.Mappers;
 using Gitria.Core.Models;
+using Gitria.Core.Services;
 
 namespace Gitria.Core
 {
@@ -31,11 +32,17 @@ namespace Gitria.Core
         public List<Repository> GetActiveRepositories()
         {
             var allRepositories = RepositoryMapper.MapFrom(GitRepositoryConnection.GetAllRepositories());
+
             return GetActiveRepositories(allRepositories);
         }
 
         private List<Repository> GetActiveRepositories(List<Repository> repositories)
         {
+            foreach (var repository in repositories)
+            {
+                repository.Initials = InitialExtractor.Extract(repository.Name);
+            }
+
             return repositories.Where(repository => repository.UpdatedAt > DateTime.Now.AddMonths(-3)).ToList();
         }
         
