@@ -11,7 +11,7 @@ namespace Gitria.Core.Mappers
         {
             return new Commit
             {
-                Author = new CommitAuthor
+                Author = new Author
                 {
                     Name = gitCommit.committer?.login,
                     AvatarLink = gitCommit.committer?.avatar_url,

@@ -9,7 +9,7 @@ namespace Gitria.Core.Models
         public DateTime Date { get; set; }
         public string TimeAgo { get; set; }
         public string Url { get; set; }
-        public CommitAuthor Author { get; set; }
+        public Author Author { get; set; }
         public string Message { get; set; }
     }
 }
