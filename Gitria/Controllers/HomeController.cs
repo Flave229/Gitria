@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Linq;
 using System.Web.Mvc;
-using Gitria.Api.Models;
+using Gitria.Core.Models;
 
 namespace Gitria.Controllers
 {

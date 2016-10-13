@@ -1,11 +1,11 @@
-﻿using Gitria.Api.GitModels;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Gitria.Api.GitModels;
 
-namespace Gitria.Api.Models
+namespace Gitria.Core.Models
 {
     public class GitriaModel
     {
-        public List<GitRepository> Repositories { get; set; }
+        public List<Repository> Repositories { get; set; }
         public int ActiveRepositories { get; set; }
         public string LastUpdate { get; set; }
         public List<GitCommit> CommitsThisWeek { get; set; }

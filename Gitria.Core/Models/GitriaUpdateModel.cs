@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Gitria.Api.GitModels;
 
-namespace Gitria.Api.Models
+namespace Gitria.Core.Models
 {
     public class GitriaUpdateModel
     {

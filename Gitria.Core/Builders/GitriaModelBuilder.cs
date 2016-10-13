@@ -1,9 +1,10 @@
 ﻿using Gitria.Api.GitModels;
-using Gitria.Api.Models;
 using Gitria.Core.GitCommunications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Gitria.Core.Mappers;
+using Gitria.Core.Models;
 
 namespace Gitria.Core
 {
@@ -19,7 +20,7 @@ namespace Gitria.Core
 
             return new GitriaModel
             {
-                Repositories = allRepositories,
+                Repositories = RepositoryMapper.MapFrom(allRepositories),
                 ActiveRepositories = activeRepositories.Count(),
                 LastUpdate = lastUpdated.ToString("yyyy-MM-dd-HH-mm-ss"),
                 CommitsThisWeek = commitsThisWeek,
