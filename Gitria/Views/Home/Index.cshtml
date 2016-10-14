@@ -1,6 +1,7 @@
 ﻿@model Gitria.Core.Models.GitriaModel
 
 @Scripts.Render("~/Scripts/GitriaScripts/GithubCommunication.js")
+@Scripts.Render("~/Scripts/GitriaScripts/GitriaChartHandler.js")
 
 <head>
     <!-- Custom CSS -->
@@ -121,11 +122,15 @@
                                     <span class="applicationText">@repository.Initials</span>
                                 </div>
                                 <div class="appDeletionsContainer">
-                                    <canvas id="appDeletions" class="appDeletions" height="110" width="110"></canvas>
+                                    <canvas id="@(repository.Name)Deletions" class="appDeletions" height="110" width="110"></canvas>
                                 </div>
                                 <div class="appAdditionsContainer">
-                                    <canvas id="appAdditions" class="appAdditions" height="120" width="120"></canvas>
+                                    <canvas id="@(repository.Name)Additions" class="appAdditions" height="120" width="120"></canvas>
                                 </div>
+
+                                <script>
+                                    GenerateChartForId("@repository.Name");
+                                </script>
                             }
                         </div>
                         <!-- /.panel-body -->
@@ -197,7 +202,6 @@
     @Html.Hidden("lastUpdate", Model.LastUpdate)
     @Html.Hidden("apiController", Url.Action("CheckForUpdates", "Home"))
 
-    @Scripts.Render("~/Scripts/GitriaScripts/GitriaChartHandler.js")
     <script>
         window.setInterval(function () {
             CheckForUpdates();
