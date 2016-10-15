@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Text;
 using Gitria.Core.Models;
@@ -75,6 +76,36 @@ namespace Gitria.Core.GitCommunications
             catch (Exception)
             {
                 return new List<GitCommit>();
+            }
+        }
+
+        public static GitRepositoryStatistics GetAdditionsAndDeletionsForRepository(Repository repository)
+        {
+            try
+            {
+                var authKey = GetAuthKey();
+
+                var getRepositoriesRequest = (HttpWebRequest)WebRequest.Create($"https://api.github.com/repos/{repository.Owner.login}/{repository.Name}/stats/contributors");
+                getRepositoriesRequest.ContentType = "application/json";
+                getRepositoriesRequest.Accept = "*/*";
+                getRepositoriesRequest.Method = "GET";
+                getRepositoriesRequest.UserAgent = "Flave229";
+                getRepositoriesRequest.Headers.Add("Authorization", "Basic " + Convert.ToBase64String(new ASCIIEncoding().GetBytes(authKey)));
+
+                var httpResponse = (HttpWebResponse)getRepositoriesRequest.GetResponse();
+
+                List<GitRepositoryStatistics> repositoryStatistics;
+
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    repositoryStatistics = JsonConvert.DeserializeObject<List<GitRepositoryStatistics>>(streamReader.ReadToEnd());
+                }
+
+                return repositoryStatistics.ElementAt(0);
+            }
+            catch (Exception)
+            {
+                return new GitRepositoryStatistics();
             }
         }
     }

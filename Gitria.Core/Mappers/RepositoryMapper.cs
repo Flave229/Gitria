@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Gitria.Api.GitModels;
 using Gitria.Core.Models;
 
@@ -28,6 +29,33 @@ namespace Gitria.Core.Mappers
             }
 
             return repositoryList;
+        }
+
+        public static Repository MapInto(Repository repository, GitRepositoryStatistics repositoryStatistics)
+        {
+            try
+            {
+                foreach (var week in repositoryStatistics.weeks)
+                {
+                    var date = DateTimeOffset.FromUnixTimeSeconds(week.w).UtcDateTime;
+
+                    if (date >= DateTime.Today.AddDays(-21))
+                    {
+                        repository.WeeklyRepositoryStatistics.Add(new RepositoryStatistics
+                        {
+                            Week = DateTimeOffset.FromUnixTimeSeconds(week.w).UtcDateTime,
+                            Additions = week.a,
+                            Deletions = week.d
+                        });
+                    }
+                }
+
+                return repository;
+            }
+            catch (Exception)
+            {
+                return repository;
+            }
         }
     }
 }

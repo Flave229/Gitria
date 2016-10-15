@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="GitCommunications\GitRepositoryConnection.cs" />
     <Compile Include="Builders\GitriaModelBuilder.cs" />
+    <Compile Include="Models\RepositoryStatistics.cs" />
     <Compile Include="Services\InitialExtractor.cs" />
     <Compile Include="Mappers\CommitMapper.cs" />
     <Compile Include="Mappers\RepositoryMapper.cs" />

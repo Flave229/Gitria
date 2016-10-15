@@ -13,6 +13,7 @@ namespace Gitria.Core
         public GitriaModel BuildGitriaModel()
         {
             var allRepositories = RepositoryMapper.MapFrom(GitRepositoryConnection.GetAllRepositories());
+            allRepositories = GetRepositoryStatistics(allRepositories);
             var activeRepositories = GetActiveRepositories(allRepositories);
             var activeCommits = GetCommitsForRepositories(activeRepositories);
             var commitsThisWeek = FilterCommitsByTime(activeCommits, DateTime.Today.AddDays(-7), DateTime.Today.AddDays(1));
@@ -29,6 +30,16 @@ namespace Gitria.Core
             };
         }
 
+        private List<Repository> GetRepositoryStatistics(List<Repository> repositories)
+        {
+            for(var i = 0; i < repositories.Count; i++)
+            {
+                repositories[i] = RepositoryMapper.MapInto(repositories[i], GitRepositoryConnection.GetAdditionsAndDeletionsForRepository(repositories[i]));
+            }
+
+            return repositories;
+        }
+
         public List<Repository> GetActiveRepositories()
         {
             var allRepositories = RepositoryMapper.MapFrom(GitRepositoryConnection.GetAllRepositories());
@@ -41,6 +52,7 @@ namespace Gitria.Core
             foreach (var repository in repositories)
             {
                 repository.Initials = InitialExtractor.Extract(repository.Name);
+                var test = RepositoryMapper.MapInto(repository, GitRepositoryConnection.GetAdditionsAndDeletionsForRepository(repository));
             }
 
             return repositories.Where(repository => repository.UpdatedAt > DateTime.Now.AddMonths(-3)).ToList();
