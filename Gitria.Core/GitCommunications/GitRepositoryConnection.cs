@@ -74,7 +74,7 @@ namespace Gitria.Core.GitCommunications
             }
             catch (Exception)
             {
-                return new List<GitRepository>();
+                return new List<GitCommit>();
             }
         }
     }
