@@ -52,7 +52,6 @@ namespace Gitria.Core
             foreach (var repository in repositories)
             {
                 repository.Initials = InitialExtractor.Extract(repository.Name);
-                var test = RepositoryMapper.MapInto(repository, GitRepositoryConnection.GetAdditionsAndDeletionsForRepository(repository));
             }
 
             return repositories.Where(repository => repository.UpdatedAt > DateTime.Now.AddMonths(-3)).ToList();

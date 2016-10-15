@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Gitria.Api.GitModels;
 using Gitria.Core.Models;
 
@@ -49,6 +50,8 @@ namespace Gitria.Core.Mappers
                         });
                     }
                 }
+
+                repository.WeeklyRepositoryStatistics = repository.WeeklyRepositoryStatistics.OrderByDescending(statistics => statistics.Week).ToList();
 
                 return repository;
             }

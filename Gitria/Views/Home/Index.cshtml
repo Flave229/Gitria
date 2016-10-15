@@ -129,7 +129,7 @@
                                 </div>
 
                                 <script>
-                                    GenerateChartForId("@repository.Name");
+                                    GenerateChartForId("@repository.Name", @Html.Raw(Json.Encode(@repository.WeeklyRepositoryStatistics)));
                                 </script>
                             }
                         </div>

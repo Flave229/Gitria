@@ -1,7 +1,7 @@
-﻿function GenerateChartForId(repository)
+﻿function GenerateChartForId(repository, data)
 {
     var deletionsElement = document.getElementById(repository + "Deletions").getContext('2d');
-
+    debugger;
     var myChart1 = new Chart(deletionsElement,
     {
         type: 'doughnut',
@@ -11,7 +11,7 @@
             datasets: [
             {
                 backgroundColor: ["#F7464A", "#FFFFFF"],
-                data: [20, 80]
+                data: [data[0].Deletions, data[1].Deletions]
             }]
         },
         options:
@@ -35,7 +35,7 @@
             datasets: [
             {
                 backgroundColor: ["#32CD32", "#FFFFFF"],
-                data: [45, 55]
+                data: [data[0].Additions, data[1].Additions]
             }]
         },
         options:
