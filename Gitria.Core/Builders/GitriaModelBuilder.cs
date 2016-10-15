@@ -1,12 +1,12 @@
-﻿using Gitria.Core.GitCommunications;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Gitria.Core.GitCommunications;
 using Gitria.Core.Mappers;
 using Gitria.Core.Models;
 using Gitria.Core.Services;
 
-namespace Gitria.Core
+namespace Gitria.Core.Builders
 {
     public class GitriaModelBuilder
     {
@@ -22,11 +22,11 @@ namespace Gitria.Core
             return new GitriaModel
             {
                 Repositories = allRepositories,
-                ActiveRepositories = activeRepositories.Count(),
+                ActiveRepositories = activeRepositories.Count,
                 LastUpdate = lastUpdated.ToString("yyyy-MM-dd-HH-mm-ss"),
                 CommitsThisWeek = commitsThisWeek,
-                CommitsThisWeekCount = commitsThisWeek.Count(),
-                CommitsThisMonthCount = FilterCommitsByTime(activeCommits, DateTime.Today.AddMonths(-1), DateTime.Today.AddDays(1)).Count()
+                CommitsThisWeekCount = commitsThisWeek.Count,
+                CommitsThisMonthCount = FilterCommitsByTime(activeCommits, DateTime.Today.AddMonths(-1), DateTime.Today.AddDays(1)).Count
             };
         }
 

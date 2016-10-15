@@ -34,14 +34,10 @@ namespace Gitria.Core.GitCommunications
 
                 var httpResponse = (HttpWebResponse)getRepositoriesRequest.GetResponse();
 
-                var repositories = new List<GitRepository>();
-
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
-                    repositories = JsonConvert.DeserializeObject<List<GitRepository>>(streamReader.ReadToEnd());
+                    return JsonConvert.DeserializeObject<List<GitRepository>>(streamReader.ReadToEnd());
                 }
-
-                return repositories;
             }
             catch (Exception)
             {
@@ -64,14 +60,10 @@ namespace Gitria.Core.GitCommunications
 
                 var httpResponse = (HttpWebResponse)getRepositoriesRequest.GetResponse();
 
-                List<GitCommit> commit;
-
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
-                    commit = JsonConvert.DeserializeObject<List<GitCommit>>(streamReader.ReadToEnd());
+                    return JsonConvert.DeserializeObject<List<GitCommit>>(streamReader.ReadToEnd());
                 }
-
-                return commit;
             }
             catch (Exception)
             {
