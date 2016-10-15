@@ -18,6 +18,10 @@
         },
         options:
         {
+            tooltips:
+            {
+                enabled: false
+            },
             legend:
             {
                 display: false
@@ -44,6 +48,10 @@
         },
         options:
         {
+            tooltips:
+            {
+                enabled: false
+            },
             legend:
             {
                 display: false
