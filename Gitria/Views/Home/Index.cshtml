@@ -123,7 +123,7 @@
                                     $(document)
                                         .ready(function () {
                                             $("#@(repository.Name)Statistics")
-                                                .load('@Url.Action("GetApplicationStatisticsPartial", "Home", new { repository = Json.Encode(repository) })');
+                                                .load('@Url.Action("GetApplicationStatisticsPartial", "Home", new { repositoryJson = Json.Encode(repository) })');
                                         });
                                 </script>
                             }

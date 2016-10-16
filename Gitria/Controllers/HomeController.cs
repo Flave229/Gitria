@@ -3,6 +3,8 @@ using System;
 using System.Linq;
 using System.Web.Mvc;
 using Gitria.Core.Builders;
+using Gitria.Core.GitCommunications;
+using Gitria.Core.Mappers;
 using Gitria.Core.Models;
 using Newtonsoft.Json.Serialization;
 using JsonSerializer = Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializer;
@@ -18,9 +20,12 @@ namespace Gitria.Controllers
             return View(model);
         }
 
-        public ActionResult GetApplicationStatisticsPartial(string repository)
+        public ActionResult GetApplicationStatisticsPartial(string repositoryJson)
         {
-            return View("ApplicationStatistics", JsonConvert.DeserializeObject<Repository>(repository));
+            var repository = JsonConvert.DeserializeObject<Repository>(repositoryJson);
+            var model = RepositoryMapper.MapInto(repository, GitRepositoryConnection.GetAdditionsAndDeletionsForRepository(repository));
+
+            return View("ApplicationStatistics", model);
         }
 
         [HttpGet]

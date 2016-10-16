@@ -13,7 +13,6 @@ namespace Gitria.Core.Builders
         public GitriaModel BuildGitriaModel()
         {
             var allRepositories = RepositoryMapper.MapFrom(GitRepositoryConnection.GetAllRepositories());
-            allRepositories = GetRepositoryStatistics(allRepositories);
             var activeRepositories = GetActiveRepositories(allRepositories);
             var activeCommits = GetCommitsForRepositories(activeRepositories);
             var commitsThisWeek = FilterCommitsByTime(activeCommits, DateTime.Today.AddDays(-7), DateTime.Today.AddDays(1));
@@ -30,7 +29,7 @@ namespace Gitria.Core.Builders
             };
         }
 
-        private List<Repository> GetRepositoryStatistics(List<Repository> repositories)
+        public List<Repository> GetRepositoryStatistics(List<Repository> repositories)
         {
             for(var i = 0; i < repositories.Count; i++)
             {
