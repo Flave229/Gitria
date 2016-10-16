@@ -1,0 +1,19 @@
+﻿@model Gitria.Core.Models.Repository
+@{
+    Layout = null;
+}
+
+
+<div class="applicationIcon">
+    <span class="applicationText">@Model.Initials</span>
+</div>
+<div class="appDeletionsContainer">
+    <canvas id="@(Model.Name)Deletions" class="appDeletions" height="110" width="110"></canvas>
+</div>
+<div class="appAdditionsContainer">
+    <canvas id="@(Model.Name)Additions" class="appAdditions" height="120" width="120"></canvas>
+</div>
+
+<script>
+    GenerateChartForId("@Model.Name", @Html.Raw(Json.Encode(Model.WeeklyRepositoryStatistics)));
+</script>

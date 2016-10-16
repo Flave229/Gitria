@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web.Mvc;
 using Gitria.Core.Builders;
 using Gitria.Core.Models;
+using Newtonsoft.Json.Serialization;
+using JsonSerializer = Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializer;
 
 namespace Gitria.Controllers
 {
@@ -14,6 +16,11 @@ namespace Gitria.Controllers
             var model = new GitriaModelBuilder().BuildGitriaModel();
 
             return View(model);
+        }
+
+        public ActionResult GetApplicationStatisticsPartial(string repository)
+        {
+            return View("ApplicationStatistics", JsonConvert.DeserializeObject<Repository>(repository));
         }
 
         [HttpGet]

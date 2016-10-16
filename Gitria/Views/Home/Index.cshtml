@@ -115,21 +115,16 @@
                             <i class="fa fa-pie-chart fa-fw"></i> Repository Statistics
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body">
+                        <div id="repositoryStatistics" class="panel-body">
                             @foreach (var repository in Model.Repositories.OrderByDescending(repository => repository.UpdatedAt))
                             {
-                                <div class="applicationIcon">
-                                    <span class="applicationText">@repository.Initials</span>
-                                </div>
-                                <div class="appDeletionsContainer">
-                                    <canvas id="@(repository.Name)Deletions" class="appDeletions" height="110" width="110"></canvas>
-                                </div>
-                                <div class="appAdditionsContainer">
-                                    <canvas id="@(repository.Name)Additions" class="appAdditions" height="120" width="120"></canvas>
-                                </div>
-
+                                <div id ="@(repository.Name)Statistics" style="margin: 0"></div>
                                 <script>
-                                    GenerateChartForId("@repository.Name", @Html.Raw(Json.Encode(@repository.WeeklyRepositoryStatistics)));
+                                    $(document)
+                                        .ready(function () {
+                                            $("#@(repository.Name)Statistics")
+                                                .load('@Url.Action("GetApplicationStatisticsPartial", "Home", new { repository = Json.Encode(repository) })');
+                                        });
                                 </script>
                             }
                         </div>
