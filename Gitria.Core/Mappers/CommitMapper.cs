@@ -11,6 +11,7 @@ namespace Gitria.Core.Mappers
         {
             return new Commit
             {
+                Id = gitCommit.sha,
                 Author = new Author
                 {
                     Name = gitCommit.committer?.login,

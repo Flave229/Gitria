@@ -99,7 +99,7 @@
                                     <i class="fa fa-support fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">1</div>
+                                    <div class="huge">@Model.TotalIssueCount</div>
                                     <div>Issue</div>
                                 </div>
                             </div>
@@ -143,42 +143,14 @@
                             <div id="commit-panel" class="list-group">
                                 @foreach (var commit in Model.CommitsThisWeek)
                                 {
-                                    <div>
-                                        <a href="@commit.Url" class="list-group-item">
-                                            <table class="table-condensed" border="0">
-                                                <tr>
-                                                    <td>
-                                                        <table>
-                                                            <tr>
-                                                                <td class="img-size-20">
-                                                                    <img src="@commit.Author.AvatarLink" class="img-circle img-scale" alt="@commit.Author.Name" />
-                                                                </td>
-                                                                <td>
-                                                                    <h3><i class="fa fa-code fa-fw"></i> @commit.Author.Name committed to @commit.RepositoryName</h3>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td valign="top">
-                                                        <table border="0">
-                                                            <tr>
-                                                                <td>
-                                                                    <span class="text-muted small">@commit.TimeAgo</span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <span>@commit.Message</span>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </a>
-                                    </div>
+                                    <div id="@(commit.Id)" style="margin: 0"></div>
+                                    <script>
+                                    $(document)
+                                        .ready(function () {
+                                            $("#@(commit.Id)")
+                                                .load('@Url.Action("GetCommitPartial", "Home", new { commitJson = Json.Encode(commit) })');
+                                        });
+                                    </script>
                                 }
                             </div>
                         </div>

@@ -10,5 +10,6 @@ namespace Gitria.Core.Models
         public List<Commit> CommitsThisWeek { get; set; }
         public int CommitsThisWeekCount { get; set; }
         public int CommitsThisMonthCount { get; set; }
+        public int TotalIssueCount { get; set; }
     }
 }

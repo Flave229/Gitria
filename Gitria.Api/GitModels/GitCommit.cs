@@ -4,6 +4,7 @@ namespace Gitria.Api.GitModels
 {
     public class GitCommit
     {
+        public string sha { get; set; }
         public string html_url { get; set; }
         public GitCommitInfo commit { get; set; }
         public GitAuthor committer { get; set; }

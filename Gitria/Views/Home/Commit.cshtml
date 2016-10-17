@@ -1,0 +1,41 @@
+﻿@model Gitria.Core.Models.Commit
+@{
+    Layout = null;
+}
+
+<div>
+    <a href="@Model.Url" class="list-group-item">
+        <table class="table-condensed" border="0">
+            <tr>
+                <td>
+                    <table>
+                        <tr>
+                            <td class="img-size-20">
+                                <img src="@Model.Author.AvatarLink" class="img-circle img-scale" alt="@Model.Author.Name" />
+                            </td>
+                            <td>
+                                <h3><i class="fa fa-code fa-fw"></i> @Model.Author.Name committed to @Model.RepositoryName</h3>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <table border="0">
+                        <tr>
+                            <td>
+                                <span class="text-muted small">@Model.TimeAgo</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>@Model.Message</span>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </a>
+</div>

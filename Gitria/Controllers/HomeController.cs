@@ -6,8 +6,6 @@ using Gitria.Core.Builders;
 using Gitria.Core.GitCommunications;
 using Gitria.Core.Mappers;
 using Gitria.Core.Models;
-using Newtonsoft.Json.Serialization;
-using JsonSerializer = Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializer;
 
 namespace Gitria.Controllers
 {
@@ -26,6 +24,13 @@ namespace Gitria.Controllers
             var model = RepositoryMapper.MapInto(repository, GitRepositoryConnection.GetAdditionsAndDeletionsForRepository(repository));
 
             return View("ApplicationStatistics", model);
+        }
+
+        public ActionResult GetCommitPartial(string commitJson)
+        {
+            var commit = JsonConvert.DeserializeObject<Commit>(commitJson);
+
+            return View("Commit", commit);
         }
 
         [HttpGet]

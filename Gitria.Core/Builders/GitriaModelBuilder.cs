@@ -25,7 +25,8 @@ namespace Gitria.Core.Builders
                 LastUpdate = lastUpdated.ToString("yyyy-MM-dd-HH-mm-ss"),
                 CommitsThisWeek = commitsThisWeek,
                 CommitsThisWeekCount = commitsThisWeek.Count,
-                CommitsThisMonthCount = FilterCommitsByTime(activeCommits, DateTime.Today.AddMonths(-1), DateTime.Today.AddDays(1)).Count
+                CommitsThisMonthCount = FilterCommitsByTime(activeCommits, DateTime.Today.AddMonths(-1), DateTime.Today.AddDays(1)).Count,
+                TotalIssueCount = allRepositories.Sum(repository => repository.IssueCount)
             };
         }
 

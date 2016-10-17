@@ -16,7 +16,8 @@ namespace Gitria.Core.Mappers
                 CommitsUrl = gitRepository.commits_url,
                 Owner = gitRepository.owner,
                 UpdatedAt = gitRepository.updated_at,
-                Url = gitRepository.url
+                Url = gitRepository.url,
+                IssueCount = gitRepository.open_issues_count
             };
         }
 

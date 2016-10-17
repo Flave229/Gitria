@@ -9,5 +9,6 @@ namespace Gitria.Api.GitModels
         public string commits_url { get; set; }
         public DateTime updated_at { get; set; }
         public GitAuthor owner { get; set; }
+        public int open_issues_count { get; set; }
     }
 }

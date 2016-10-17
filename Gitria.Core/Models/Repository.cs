@@ -13,6 +13,7 @@ namespace Gitria.Core.Models
         public DateTime UpdatedAt { get; set; }
         public GitAuthor Owner { get; set; }
         public List<RepositoryStatistics> WeeklyRepositoryStatistics { get; set; }
+        public int IssueCount { get; set; }
 
         public Repository()
         {
