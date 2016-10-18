@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 using Gitria.Core.Models;
 
 namespace Gitria.Core.GitCommunications
@@ -19,7 +18,7 @@ namespace Gitria.Core.GitCommunications
             return string.Join("", authFileContents);
         }
 
-        public static async Task<List<GitRepository>> GetAllRepositories()
+        public static List<GitRepository> GetAllRepositories()
         {
             try
             {
@@ -33,7 +32,7 @@ namespace Gitria.Core.GitCommunications
                 getRepositoriesRequest.Headers.Add("Authorization", "Basic " + Convert.ToBase64String(new ASCIIEncoding().GetBytes(authKey)));
                 getRepositoriesRequest.Headers.Add("type", "all");
 
-                var httpResponse = (HttpWebResponse) await Task.Factory.FromAsync(getRepositoriesRequest.BeginGetResponse, getRepositoriesRequest.EndGetResponse, null);
+                var httpResponse = (HttpWebResponse)getRepositoriesRequest.GetResponse();
 
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
