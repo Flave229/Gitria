@@ -34,6 +34,11 @@ namespace Gitria.Core.GitCommunications
 
                 var httpResponse = (HttpWebResponse)getRepositoriesRequest.GetResponse();
 
+                if (httpResponse.StatusCode != HttpStatusCode.OK)
+                {
+                    return new List<GitRepository>();
+                }
+
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
                     return JsonConvert.DeserializeObject<List<GitRepository>>(streamReader.ReadToEnd());
@@ -59,6 +64,11 @@ namespace Gitria.Core.GitCommunications
                 getRepositoriesRequest.Headers.Add("Authorization", "Basic " + Convert.ToBase64String(new ASCIIEncoding().GetBytes(authKey)));
 
                 var httpResponse = (HttpWebResponse)getRepositoriesRequest.GetResponse();
+                
+                if (httpResponse.StatusCode != HttpStatusCode.OK)
+                {
+                    return new List<GitCommit>();
+                }
 
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
@@ -85,6 +95,11 @@ namespace Gitria.Core.GitCommunications
                 getRepositoriesRequest.Headers.Add("Authorization", "Basic " + Convert.ToBase64String(new ASCIIEncoding().GetBytes(authKey)));
 
                 var httpResponse = (HttpWebResponse)getRepositoriesRequest.GetResponse();
+
+                if (httpResponse.StatusCode != HttpStatusCode.OK)
+                {
+                    return new GitRepositoryStatistics();
+                }
 
                 List<GitRepositoryStatistics> repositoryStatistics;
 
