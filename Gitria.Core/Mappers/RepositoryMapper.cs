@@ -61,5 +61,47 @@ namespace Gitria.Core.Mappers
                 return repository;
             }
         }
+
+        public static Repository MapInto(Repository repository, List<GitRepositoryStatistics> repositoryStatistics)
+        {
+            try
+            {
+                foreach (var contributer in repositoryStatistics)
+                {
+                    foreach (var week in contributer.weeks)
+                    {
+                        var date = DateTimeOffset.FromUnixTimeSeconds(week.w).UtcDateTime;
+
+                        if (date <= DateTime.Today.AddDays(-21))
+                            continue;
+
+                        if (repository.WeeklyRepositoryStatistics.Any(x => x.Week == DateTimeOffset.FromUnixTimeSeconds(week.w).UtcDateTime) == false)
+                        {
+                            repository.WeeklyRepositoryStatistics.Add(new RepositoryStatistics
+                            {
+                                Week = DateTimeOffset.FromUnixTimeSeconds(week.w).UtcDateTime,
+                                Additions = week.a,
+                                Deletions = week.d
+                            });
+
+                            continue;
+                        }
+
+                        var existingWeekStatistics = repository.WeeklyRepositoryStatistics.Where(x => x.Week.Equals(DateTimeOffset.FromUnixTimeSeconds(week.w).UtcDateTime)).ToList();
+
+                        existingWeekStatistics.FirstOrDefault().Additions += week.a;
+                        existingWeekStatistics.FirstOrDefault().Deletions += week.d;
+                    }
+                }
+
+                repository.WeeklyRepositoryStatistics = repository.WeeklyRepositoryStatistics.OrderByDescending(statistics => statistics.Week).ToList();
+
+                return repository;
+            }
+            catch (Exception)
+            {
+                return repository;
+            }
+        }
     }
 }

@@ -2,6 +2,7 @@
 {
     var deletionsElement = document.getElementById(repository + "Deletions").getContext('2d');
 
+    debugger;
     var totalDeletions = data[0].Deletions + data[1].Deletions;
 
     var myChart1 = new Chart(deletionsElement,

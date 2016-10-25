@@ -17,7 +17,12 @@ namespace Gitria.Core.Models
 
         public Repository()
         {
-            WeeklyRepositoryStatistics = new List<RepositoryStatistics>();
+            // The list needs to be populated with 2 elements by default, as assumptions are made that data will be populated for the first two weeks
+            WeeklyRepositoryStatistics = new List<RepositoryStatistics>
+            {
+                new RepositoryStatistics(),
+                new RepositoryStatistics()
+            };
         }
     }
 }

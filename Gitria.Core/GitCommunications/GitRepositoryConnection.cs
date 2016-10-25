@@ -81,7 +81,7 @@ namespace Gitria.Core.GitCommunications
             }
         }
 
-        public static GitRepositoryStatistics GetAdditionsAndDeletionsForRepository(Repository repository)
+        public static List<GitRepositoryStatistics> GetAdditionsAndDeletionsForRepository(Repository repository)
         {
             try
             {
@@ -98,7 +98,7 @@ namespace Gitria.Core.GitCommunications
 
                 if (httpResponse.StatusCode != HttpStatusCode.OK)
                 {
-                    return new GitRepositoryStatistics();
+                    return new List<GitRepositoryStatistics>();
                 }
 
                 List<GitRepositoryStatistics> repositoryStatistics;
@@ -108,11 +108,11 @@ namespace Gitria.Core.GitCommunications
                     repositoryStatistics = JsonConvert.DeserializeObject<List<GitRepositoryStatistics>>(streamReader.ReadToEnd());
                 }
 
-                return repositoryStatistics.ElementAt(0);
+                return repositoryStatistics;
             }
             catch (Exception)
             {
-                return new GitRepositoryStatistics();
+                return new List<GitRepositoryStatistics>();
             }
         }
     }
