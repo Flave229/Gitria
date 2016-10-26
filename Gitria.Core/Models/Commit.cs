@@ -2,7 +2,7 @@
 
 namespace Gitria.Core.Models
 {
-    public class Commit
+    public class Commit : BaseModel
     {
         public string Id { get; set; }
         public string RepositoryName { get; set; }

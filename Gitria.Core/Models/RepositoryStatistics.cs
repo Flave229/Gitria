@@ -2,7 +2,7 @@
 
 namespace Gitria.Core.Models
 {
-    public class RepositoryStatistics
+    public class RepositoryStatistics : BaseModel
     {
         public DateTime Week { get; set; }
         public int Additions { get; set; }

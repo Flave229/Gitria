@@ -9,6 +9,14 @@ namespace Gitria.Core.Mappers
     {
         public static Commit MapFrom(GitCommit gitCommit)
         {
+            if (gitCommit.HasError)
+            {
+                var commit = new Commit();
+                commit.AddError(gitCommit.Error);
+
+                return commit;
+            }
+
             return new Commit
             {
                 Id = gitCommit.sha,

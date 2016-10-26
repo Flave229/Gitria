@@ -10,6 +10,14 @@ namespace Gitria.Core.Mappers
     {
         public static Repository MapFrom(GitRepository gitRepository)
         {
+            if (gitRepository.HasError)
+            {
+                var repository = new Repository();
+                repository.AddError(gitRepository.Error);
+
+                return repository;
+            }
+
             return new Repository
             {
                 Name = gitRepository.name,
@@ -37,6 +45,9 @@ namespace Gitria.Core.Mappers
         {
             try
             {
+                if (repositoryStatistics.HasError)
+                    return repository;
+
                 foreach (var week in repositoryStatistics.weeks)
                 {
                     var date = DateTimeOffset.FromUnixTimeSeconds(week.w).UtcDateTime;

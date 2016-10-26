@@ -4,7 +4,7 @@ using Gitria.Api.GitModels;
 
 namespace Gitria.Core.Models
 {
-    public class Repository
+    public class Repository : BaseModel
     {
         public string Name { get; set; }
         public string Initials { get; set; }
