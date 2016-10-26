@@ -74,15 +74,7 @@ namespace Gitria.Core.Builders
                 {
                     var timeAgo = (DateTime.Now - commit.Date);
 
-                    if ((int)timeAgo.TotalSeconds <= 1)
-                    {
-                        commit.TimeAgo = "1 second ago";
-                    }
-                    else if ((int)timeAgo.TotalSeconds < 60)
-                    {
-                        commit.TimeAgo = (int)timeAgo.TotalSeconds + " seconds ago";
-                    }
-                    else if ((int)timeAgo.TotalMinutes == 1)
+                    if ((int)timeAgo.TotalMinutes <= 1)
                     {
                         commit.TimeAgo = "1 minute ago";
                     }
