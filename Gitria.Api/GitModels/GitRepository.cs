@@ -2,7 +2,7 @@
 
 namespace Gitria.Api.GitModels
 {
-    public class GitRepository
+    public class GitRepository : GitResponse
     {
         public string name { get; set; }
         public string url { get; set; }

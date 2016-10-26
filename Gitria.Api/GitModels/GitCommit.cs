@@ -2,7 +2,7 @@
 
 namespace Gitria.Api.GitModels
 {
-    public class GitCommit
+    public class GitCommit : GitResponse
     {
         public string sha { get; set; }
         public string html_url { get; set; }

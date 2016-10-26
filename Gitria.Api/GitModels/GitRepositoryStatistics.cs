@@ -2,7 +2,7 @@
 
 namespace Gitria.Api.GitModels
 {
-    public class GitRepositoryStatistics
+    public class GitRepositoryStatistics : GitResponse
     {
         public List<GitRepositoryStatisticWeek> weeks { get; set; }
     }

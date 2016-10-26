@@ -36,7 +36,10 @@ namespace Gitria.Core.GitCommunications
 
                 if (httpResponse.StatusCode != HttpStatusCode.OK)
                 {
-                    return new List<GitRepository>();
+                    var errorStatistics = new GitRepository();
+                    errorStatistics.AddError("Github API call failed when fetching repositories.");
+
+                    return new List<GitRepository> { errorStatistics };
                 }
 
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
@@ -46,7 +49,10 @@ namespace Gitria.Core.GitCommunications
             }
             catch (Exception)
             {
-                return new List<GitRepository>();
+                var errorStatistics = new GitRepository();
+                errorStatistics.AddError("An exception was thrown while fetching repositories.");
+
+                return new List<GitRepository> { errorStatistics };
             }
         }
 
@@ -67,7 +73,10 @@ namespace Gitria.Core.GitCommunications
                 
                 if (httpResponse.StatusCode != HttpStatusCode.OK)
                 {
-                    return new List<GitCommit>();
+                    var errorCommit = new GitCommit();
+                    errorCommit.AddError($"Github API call failed when fetching commits for repository {repository.Name}.");
+
+                    return new List<GitCommit> { errorCommit };
                 }
 
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
@@ -77,7 +86,10 @@ namespace Gitria.Core.GitCommunications
             }
             catch (Exception)
             {
-                return new List<GitCommit>();
+                var errorCommit = new GitCommit();
+                errorCommit.AddError($"An exception was thrown while fetching commits for repository {repository.Name}.");
+
+                return new List<GitCommit> { errorCommit };
             }
         }
 
@@ -98,7 +110,10 @@ namespace Gitria.Core.GitCommunications
 
                 if (httpResponse.StatusCode != HttpStatusCode.OK)
                 {
-                    return new List<GitRepositoryStatistics>();
+                    var errorStatistics = new GitRepositoryStatistics();
+                    errorStatistics.AddError($"Github API call failed when fetching repository statistics for {repository.Name}.");
+
+                    return new List<GitRepositoryStatistics> { errorStatistics };
                 }
 
                 List<GitRepositoryStatistics> repositoryStatistics;
@@ -110,9 +125,12 @@ namespace Gitria.Core.GitCommunications
 
                 return repositoryStatistics;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                return new List<GitRepositoryStatistics>();
+                var errorStatistics = new GitRepositoryStatistics();
+                errorStatistics.AddError($"An exception was thrown while fetching repository statistics for {repository.Name}. {exception.Message}.");
+
+                return new List<GitRepositoryStatistics> { errorStatistics };
             }
         }
     }
