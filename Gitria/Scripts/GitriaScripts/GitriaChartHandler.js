@@ -68,10 +68,10 @@
         type: 'bar',
         data:
         {
-            labels: ["Red", "Blue", "Yellow", "Green", "Purple", sixMonthData[0].Month],
+            labels: [sixMonthData[5].Month, sixMonthData[4].Month, sixMonthData[3].Month, sixMonthData[2].Month, sixMonthData[1].Month, sixMonthData[0].Month],
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                label: 'Commits',
+                data: [sixMonthData[5].CommitCount, sixMonthData[4].CommitCount, sixMonthData[3].CommitCount, sixMonthData[2].CommitCount, sixMonthData[1].CommitCount, sixMonthData[0].CommitCount],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
