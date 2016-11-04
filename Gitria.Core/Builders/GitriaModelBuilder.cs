@@ -54,7 +54,7 @@ namespace Gitria.Core.Builders
                 repository.Initials = InitialExtractor.Extract(repository.Name);
             }
 
-            return repositories.Where(repository => repository.UpdatedAt > DateTime.Now.AddMonths(-3)).ToList();
+            return repositories.Where(repository => repository.UpdatedAt > DateTime.Now.AddMonths(-1)).ToList();
         }
         
         public List<Commit> GetCommitsForRepositories(List<Repository> repositories)
