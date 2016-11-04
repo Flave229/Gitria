@@ -22,6 +22,7 @@ namespace Gitria.Controllers
         {
             var repository = JsonConvert.DeserializeObject<Repository>(repositoryJson);
             var model = RepositoryMapper.MapInto(repository, GitRepositoryConnection.GetAdditionsAndDeletionsForRepository(repository));
+            model = RepositoryMapper.MapInto(repository, GitRepositoryConnection.GetAllCommitsForRepository(repository));
 
             return View("ApplicationStatistics", model);
         }

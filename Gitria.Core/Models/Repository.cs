@@ -13,6 +13,7 @@ namespace Gitria.Core.Models
         public DateTime UpdatedAt { get; set; }
         public GitAuthor Owner { get; set; }
         public List<RepositoryStatistics> WeeklyRepositoryStatistics { get; set; }
+        public List<RepositoryCommitStatistics> SixMonthCommitData { get; set; }
         public int IssueCount { get; set; }
 
         public Repository()
@@ -23,6 +24,8 @@ namespace Gitria.Core.Models
                 new RepositoryStatistics(),
                 new RepositoryStatistics()
             };
+
+            SixMonthCommitData = new List<RepositoryCommitStatistics>();
         }
     }
 }

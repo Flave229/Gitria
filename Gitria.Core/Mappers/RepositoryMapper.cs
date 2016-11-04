@@ -114,5 +114,30 @@ namespace Gitria.Core.Mappers
                 return repository;
             }
         }
+
+        public static Repository MapInto(Repository repository, List<GitCommit> commits)
+        {
+            try
+            {
+                for (var i = 0; i < 6; i++)
+                {
+                    var gitCommits = commits.Where(commit => commit.commit.author.date.Month.Equals(DateTime.Today.AddMonths(-i).Month) && commit.commit.author.date.Year.Equals(DateTime.Today.AddMonths(-i).Year)).ToList();
+
+                    var repositoryCommitStatistics = new RepositoryCommitStatistics
+                    {
+                        MonthStart = DateTime.Today.AddMonths(-i),
+                        CommitCount = CommitMapper.MapFrom(gitCommits).Count
+                    };
+
+                    repository.SixMonthCommitData.Add(repositoryCommitStatistics);
+                }
+
+                return repository;
+            }
+            catch (Exception)
+            {
+                return repository;
+            }
+        }
     }
 }
