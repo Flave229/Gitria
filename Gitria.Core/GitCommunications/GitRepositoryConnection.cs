@@ -62,7 +62,7 @@ namespace Gitria.Core.GitCommunications
             {
                 var authKey = GetAuthKey();
 
-                var getRepositoriesRequest = (HttpWebRequest)WebRequest.Create($"https://api.github.com/repos/{repository.Owner.login}/{repository.Name}/commits");
+                var getRepositoriesRequest = (HttpWebRequest)WebRequest.Create($"https://api.github.com/repos/{repository.Owner.login}/{repository.Name}/commits?per_page=1000");
                 getRepositoriesRequest.ContentType = "application/json";
                 getRepositoriesRequest.Accept = "*/*";
                 getRepositoriesRequest.Method = "GET";
