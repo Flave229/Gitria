@@ -118,7 +118,7 @@
                         <div id="repositoryStatistics" class="panel-body">
                             @foreach (var repository in Model.Repositories.OrderByDescending(repository => repository.UpdatedAt))
                             {
-                                <div id ="@(repository.Name)Statistics" style="margin: 0"></div>
+                                <div id ="@(repository.Name)Statistics" style="float: left; width: 100%; padding-bottom: 10px"></div>
                                 <script>
                                     $(document)
                                         .ready(function () {
