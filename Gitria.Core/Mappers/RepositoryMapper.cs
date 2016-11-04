@@ -123,9 +123,11 @@ namespace Gitria.Core.Mappers
                 {
                     var gitCommits = commits.Where(commit => commit.commit.author.date.Month.Equals(DateTime.Today.AddMonths(-i).Month) && commit.commit.author.date.Year.Equals(DateTime.Today.AddMonths(-i).Year)).ToList();
 
+                    var adjustedDate = DateTime.Today.AddMonths(-i);
+
                     var repositoryCommitStatistics = new RepositoryCommitStatistics
                     {
-                        MonthStart = DateTime.Today.AddMonths(-i),
+                        MonthStart = new DateTime(adjustedDate.Year, adjustedDate.Month, 1),
                         CommitCount = CommitMapper.MapFrom(gitCommits).Count
                     };
 
