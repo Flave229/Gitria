@@ -127,7 +127,7 @@ namespace Gitria.Core.Mappers
 
                     var repositoryCommitStatistics = new RepositoryCommitStatistics
                     {
-                        MonthStart = new DateTime(adjustedDate.Year, adjustedDate.Month, 1),
+                        Month = new DateTime(adjustedDate.Year, adjustedDate.Month, 1).ToString("MMMM"),
                         CommitCount = CommitMapper.MapFrom(gitCommits).Count
                     };
 

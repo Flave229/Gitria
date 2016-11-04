@@ -19,5 +19,5 @@
 </div>
 
 <script>
-    GenerateChartForId("@Model.Name", @Html.Raw(Json.Encode(Model.WeeklyRepositoryStatistics)));
+    GenerateChartForId("@Model.Name", @Html.Raw(Json.Encode(Model.WeeklyRepositoryStatistics)), @Html.Raw(Json.Encode(Model.SixMonthCommitData)));
 </script>
