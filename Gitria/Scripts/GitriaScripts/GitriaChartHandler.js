@@ -98,6 +98,17 @@
             legend:
             {
                 display: false
+            },
+            scales:
+            {
+                yAxes: [
+                {
+                    ticks:
+                    {
+                        max: 100,
+                        min: 0
+                    }
+                }]
             }
         }
     });
