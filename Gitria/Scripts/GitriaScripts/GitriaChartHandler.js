@@ -2,7 +2,31 @@
 {
     var deletionsElement = document.getElementById(repository + "Deletions").getContext('2d');
 
-    var totalDeletions = weeklyData[0].Deletions + weeklyData[1].Deletions;
+    var lastWeekDeletions = weeklyData[1].Deletions;
+    var thisWeekDeletions = weeklyData[0].Deletions;
+
+    var lastWeekDeletionsPercentage = weeklyData[1].Deletions;
+    var thisWeekDeletionsPercentage = weeklyData[0].Deletions;
+
+    if (lastWeekDeletions === 0 && thisWeekDeletions === 0)
+    {
+        lastWeekDeletionsPercentage = 100;
+        thisWeekDeletionsPercentage = 0;
+    }
+    else if (lastWeekDeletions === 0)
+    {
+        lastWeekDeletionsPercentage = 0;
+        thisWeekDeletionsPercentage = 100;
+    }
+    else
+    {
+        thisWeekDeletionsPercentage = (thisWeekDeletions / lastWeekDeletions) * 100;
+
+        if (thisWeekDeletionsPercentage > 100)
+            thisWeekDeletionsPercentage = 100;
+
+        lastWeekDeletionsPercentage = 100 - thisWeekDeletionsPercentage;
+    }
 
     var myChart1 = new Chart(deletionsElement,
     {
@@ -13,7 +37,7 @@
             datasets: [
             {
                 backgroundColor: ["#F7464A", "#4C0000", "#FFFFFF"],
-                data: [(weeklyData[0].Deletions / totalDeletions) * 75, (weeklyData[1].Deletions / totalDeletions) * 75, 25]
+                data: [thisWeekDeletionsPercentage * 0.75, lastWeekDeletionsPercentage * 0.75, 25]
             }]
         },
         options:
@@ -32,7 +56,28 @@
 
     var additionsElement = document.getElementById(repository + "Additions").getContext('2d');
 
-    var totalAdditions = weeklyData[0].Additions + weeklyData[1].Additions;
+    var lastWeekAdditions = weeklyData[1].Additions;
+    var thisWeekAdditions = weeklyData[0].Additions;
+
+    var lastWeekAdditionsPercentage = weeklyData[1].Additions;
+    var thisWeekAdditionsPercentage = weeklyData[0].Additions;
+
+    if (lastWeekAdditions === 0 && thisWeekAdditions === 0) {
+        lastWeekAdditionsPercentage = 100;
+        thisWeekAdditionsPercentage = 0;
+    }
+    else if (lastWeekAdditions === 0) {
+        lastWeekAdditionsPercentage = 0;
+        thisWeekAdditionsPercentage = 100;
+    }
+    else {
+        thisWeekAdditionsPercentage = (thisWeekAdditions / lastWeekAdditions) * 100;
+
+        if (thisWeekAdditionsPercentage > 100)
+            thisWeekAdditionsPercentage = 100;
+
+        lastWeekDeletionsPercentage = 100 - thisWeekAdditionsPercentage;
+    }
 
     var myChart2 = new Chart(additionsElement,
     {
@@ -43,7 +88,7 @@
             datasets: [
             {
                 backgroundColor: ["#32CD32", "#004C00", "#FFFFFF"],
-                data: [(weeklyData[0].Additions / totalAdditions) * 75, (weeklyData[1].Additions / totalAdditions) * 75, 25]
+                data: [thisWeekAdditionsPercentage * 0.75, lastWeekDeletionsPercentage * 0.75, 25]
             }]
         },
         options:
