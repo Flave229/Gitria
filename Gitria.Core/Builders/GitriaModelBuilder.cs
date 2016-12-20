@@ -16,7 +16,7 @@ namespace Gitria.Core.Builders
             var activeRepositories = GetActiveRepositories(allRepositories);
             var activeCommits = GetCommitsForRepositories(activeRepositories);
             var commitsThisWeek = FilterCommitsByTime(activeCommits, DateTime.Today.AddDays(-7), DateTime.Today.AddDays(1));
-            var lastUpdated = commitsThisWeek.Max(commit => commit.Date);
+            var lastUpdated = commitsThisWeek.Count > 0 ? commitsThisWeek.Max(commit => commit.Date) : DateTime.Now;
 
             return new GitriaModel
             {
